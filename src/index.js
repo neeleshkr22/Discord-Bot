@@ -76,6 +76,16 @@ client.on('interactionCreate', async (interaction) => {
     }
 });
 
+client.on('interactionCreate', async (interaction) => {
+    if (!interaction.isCommand()) return;
+
+    const { commandName } = interaction;
+
+    if (commandName === 'ping') {
+        interaction.reply(`Pong! ${client.ws.ping}ms`);
+    }
+});
+
 eventHandler(client);
 
 
